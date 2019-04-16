@@ -19,7 +19,8 @@
             src="${pageContext.request.contextPath}/script/jquery-3.1.0.js"></script>
     <script type="text/javascript">
       $(function(){
-        var isHasCart = "${sessionScope.sc == null}";
+        var isHasCart = "${sessionScope.sc == null}"; //string  true
+        //alert(typeof (${sessionScope.sc == null})); // boolean true
         if (isHasCart == "true"){
           $('#cartstatus').hide();
         }
