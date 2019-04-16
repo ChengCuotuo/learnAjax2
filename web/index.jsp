@@ -19,7 +19,13 @@
             src="${pageContext.request.contextPath}/script/jquery-3.1.0.js"></script>
     <script type="text/javascript">
       $(function(){
+        var isHasCart = "${sessionScope.sc == null}";
+        if (isHasCart == "true"){
+          $('#cartstatus').hide();
+        }
+
         $('a').click(function(){
+          $('#cartstatus').show();
           var url = this.href;
           var args = {"time" : new Date()};
           $.getJSON(url, args, function(data){
@@ -33,9 +39,12 @@
     </script>
   </head>
   <body>
-    您已经将 &nbsp; <span id="bookName"> </span>&nbsp; 添加到购物车，
-    购物车中的书有 &nbsp; <span id="totalBookNumber"> </span>&nbsp; 本，
-    总价为 &nbsp; <span id="totalMoney"> </span>&nbsp; 元钱。
+    <div id="cartstatus">
+      您已经将 &nbsp; <span id="bookName"> </span>&nbsp; 添加到购物车，
+      购物车中的书有 &nbsp; <span id="totalBookNumber"> </span>&nbsp; 本，
+      总价为 &nbsp; <span id="totalMoney"> </span>&nbsp; 元钱。
+    </div>
+
     <br /><br />
     Java &nbsp;&nbsp;<a href="addToCart?id=java&price=56">添加到购物车</a>
     <br /><br />
